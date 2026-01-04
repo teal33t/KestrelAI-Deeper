@@ -7,7 +7,7 @@ volumes:
 services:
   redis:
     image: redis:7-alpine
-    container_name: kestrel-redis
+    container_name: ${REDIS_CONTAINER_NAME:-kestrel-deeper-redis}
     restart: unless-stopped
     ports:
       - "${REDIS_PORT:-6380}:6379"
@@ -129,7 +129,7 @@ services:
 
   searxng:
     image: searxng/searxng:latest
-    container_name: searxng
+    container_name: ${SEARXNG_CONTAINER_NAME:-kestrel-deeper-searxng}
     restart: unless-stopped
     ports:
       - "${SEARXNG_PORT:-8081}:8080"
